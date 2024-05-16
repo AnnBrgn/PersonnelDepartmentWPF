@@ -1,0 +1,153 @@
+﻿<Page x:Class="PersonnelDepartmentWPF.Pages.EditWorkerPages"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PersonnelDepartmentWPF.Pages"
+      xmlns:consts="clr-namespace:PersonnelDepartmentWPF.Class"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600"
+      Title="EditWorkerPages">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="190"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Image Source="{Binding Worker.ImageConverted}"
+               Grid.Column="3"
+               Grid.Row="0"
+               Margin="10"/>
+        <Button Click="AddPhoto"
+                Grid.Column="3"
+                Grid.Row="0"
+                Height="30"
+                HorizontalAlignment="Stretch"
+                Width="120"
+                Content="Редактировать"
+                VerticalAlignment="Bottom"/>
+        <Button Click="SaveChanges"
+                Grid.Column="3"
+                Grid.Row="3"
+                Height="28"
+                HorizontalAlignment="Center"
+                Width="100"
+                Content="Изменить"/>
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Имя"
+                       Margin="10 10"/>
+            <TextBlock Text="Фамилия"
+                       Margin="10 10"/>
+            <TextBlock Text="Отчество"
+                       Margin="10 10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Center">
+            <TextBox Text="{Binding Worker.Name}"
+               Margin="10 10"/>
+            <TextBox Text="{Binding Worker.LastName}"
+               Margin="10 10"/>
+            <TextBox Text="{Binding Worker.Patronymic}"
+               Margin="10 10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Пол"
+               Margin="10 10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left">
+            <ComboBox ItemsSource="{x:Static consts:Constants.GENDERS}"
+                      SelectedIndex="0"
+                      Height="32"
+                      Width="130"
+                      Margin="10" 
+                      SelectionChanged="OnGenderSelectionChanged"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left">
+            <TextBlock Text="Дата рождения"
+                       Margin="10 10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="3"
+                    VerticalAlignment="Center">
+            <DatePicker Margin="10" 
+                        SelectedDate="{Binding Worker.Birthday}"
+                        SelectedDateChanged="OnBirthdaySelected"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2"
+                    Grid.Column="0"
+                    VerticalAlignment="Stretch">
+            <TextBlock Text="ИНН"
+                       Margin="10 23"/>
+            <TextBlock Text="Номер"
+                       Margin="10 18"/>
+            <TextBlock Text="Серия"
+                       Margin="10 18"/>
+            <TextBlock Text="Телефон"
+                       Margin="10 18"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1"
+                    VerticalAlignment="Center">
+            <TextBox Text="{Binding Worker.InfoWorker.Inn}"
+                     Margin="10 10"/>
+            <TextBox Text="{Binding Worker.InfoWorker.NumberPassport}"
+                     Margin="10 10"/>
+            <TextBox Text="{Binding Worker.InfoWorker.SeriesPassport}"
+                     Margin="10 10"/>
+            <TextBox Text="{Binding Worker.InfoWorker.NumberPhone}"
+                     Margin="10 10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2"
+                    Grid.Column="2"
+                    VerticalAlignment="Stretch">
+            <TextBlock Text="Семейное положение"
+                       Margin="10 23"/>
+            <TextBlock Text="Должность"
+                       Margin="10 18"/>
+            <TextBlock Text="Статус" 
+                       Margin="10 18"/>
+            <TextBlock Text="Руководитель"
+                       Margin="10 18"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2"
+                    Grid.Column="3"
+                    VerticalAlignment="Center">
+            <TextBox Text="{Binding Worker.FamilyStatus}"
+                     Margin="10 10"/>
+            <ComboBox Margin="10 10"
+                      ItemsSource="{Binding GetPosts}" 
+                      HorizontalAlignment="Stretch"
+                      SelectedIndex="0"/>
+            <ComboBox Margin="10 10" 
+                      ItemsSource="{Binding GetRoles}" 
+                      HorizontalAlignment="Stretch"
+                      SelectionChanged="OnRoleSelected" 
+                      SelectedIndex="0"/>
+            <ComboBox Margin="10 10"
+                      SelectedIndex="{Binding GetDirectorId, Mode=OneWay}"
+                      ItemsSource="{Binding GetDirectors}" 
+                      HorizontalAlignment="Stretch"
+                      SelectionChanged="OnDirectorSelected"/>
+        </StackPanel>
+    </Grid>
+</Page>

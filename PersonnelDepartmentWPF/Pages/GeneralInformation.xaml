@@ -1,0 +1,90 @@
+﻿<Page x:Class="PersonnelDepartmentWPF.Pages.GeneralInformation"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PersonnelDepartmentWPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="600"
+      Title="GeneralInformation">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Source="{Binding Worker.ImageConverted}"
+               Grid.Column="2"
+               Grid.RowSpan="2"
+               Grid.Row="0"
+               Margin="25,18,25,65"
+               Height="150"
+               Width="150"/>
+        <StackPanel 
+            Grid.Row="0"
+            VerticalAlignment="Center">
+            <TextBlock Text="Имя"
+                       Margin="10 10"/>
+            <TextBlock Text="Фамилия"
+                       Margin="10 10"/>
+            <TextBlock Text="Отчество"
+                       Margin="10 10"/>
+        </StackPanel>
+        <StackPanel 
+            Grid.Row="1"
+            VerticalAlignment="Center">
+            <TextBlock Text="Дата рождения"
+                       Margin="10 10"/>
+            <TextBlock Text="Пол"
+                       Margin="10 10"/>
+            <TextBlock Text="Семейное положение"
+                       Margin="10 10"/>
+        </StackPanel>
+        <StackPanel 
+            VerticalAlignment="Center"
+            Grid.Row="2">
+            <TextBlock Text="Должность"
+                       Margin="10 10"/>
+            <TextBlock Text="Руководитель"
+                       Margin="10 10"/>
+            <TextBlock Text="Образование"
+                       Margin="10 10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1"
+                    VerticalAlignment="Center">
+            <TextBlock Text="{Binding Worker.Name}"
+                       Margin="10 10"/>
+            <TextBlock Text="{Binding Worker.LastName}"
+                       Margin="10 10"/>
+            <TextBlock Text="{Binding Worker.Patronymic}"
+                       Margin="10 10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalAlignment="Center">
+            <TextBlock Text="{Binding Worker.Birthday, StringFormat=dd-MM-yyyy}"
+                       Margin="10 10"/>
+            <TextBlock Text="{Binding Worker.Gender}"
+                       Margin="10 10"/>
+            <TextBlock Text="{Binding Worker.FamilyStatus}"
+                       Margin="10 10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2"
+            Grid.Column="1"
+            VerticalAlignment="Center" DataContext="{Binding Worker}">
+            <TextBlock Text="{Binding Post.Title}"
+                       Margin="10 10"/>
+            <TextBlock Text="{Binding GetDirectorFIO}"
+                       Margin="10 10"/>
+            <TextBlock Text="{Binding InfoWorker.Education}"
+                       Margin="10 10"/>
+        </StackPanel>
+    </Grid>
+</Page>

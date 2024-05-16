@@ -1,0 +1,73 @@
+﻿<Page x:Class="PersonnelDepartmentWPF.Pages.AccountingWorkerPages"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:consts="clr-namespace:PersonnelDepartmentWPF.Class"
+      xmlns:local="clr-namespace:PersonnelDepartmentWPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AccountingWorkerPages">
+
+    <Grid Background="White">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="28*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Сотрудник:"
+                   HorizontalAlignment="Center"
+                   Margin="0,10,0,10"/>
+        <TextBlock Grid.Row="0"
+                   Grid.Column="1"
+                   Text="Тип дня:"
+                   Margin="0,10,0,10"
+                   HorizontalAlignment="Center"/>
+        <TextBlock Text="{Binding TypeDay}"
+                   Margin="5,5,5,5"
+                   Grid.Column="1"
+                   Grid.Row="1"/>
+
+        <Calendar Grid.Column="2"
+                  Grid.RowSpan="5"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Top"
+                  SelectedDate="{Binding SelectedDate}" 
+                  SelectedDatesChanged="DateSelected"
+                  Margin="0,24,0,0" 
+                  Grid.Row="1" 
+                  Height="291" 
+                  Width="296"/>
+        <ComboBox ItemsSource="{Binding ListWorkers}"
+                  SelectedItem="{Binding SelectedWorker}"
+                  HorizontalAlignment="Stretch"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Margin="5,0,5,0" 
+                  VerticalAlignment="Center">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding GetFIO}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text="Причина:"
+                   Grid.Column="1"
+                   Grid.Row="2"
+                   Margin="0,5,0,5"
+                   HorizontalAlignment="Center"/>
+        <TextBlock Text="{Binding Description}"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 Margin="5,5,5,5"/>
+    </Grid>
+</Page>

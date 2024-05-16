@@ -1,0 +1,49 @@
+﻿<Window x:Class="PersonnelDepartmentWPF.Views.EmployCardWorker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonnelDepartmentWPF.Views"
+        mc:Ignorable="d"
+        Title="EmployCardWorker" Height="600" Width="850"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Frame
+            Grid.Column="1"
+            NavigationUIVisibility="Hidden"
+            Content="{Binding PageWorker}">
+
+        </Frame>
+        <StackPanel>
+            <Button Click="GenInfo"
+                    Content="Общие сведения"
+                    Height="32"
+                    Width="155"
+                    Margin="10"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"/>
+            <Button Content="Учёт сотрудника"
+                    Click="Accounting"
+                    Height="32"
+                    Width="155"
+                    Margin="10"
+                    HorizontalAlignment="Stretch"/>
+            <Button Content="Редактирование анкеты"
+                    Click="EditWorker"
+                    Height="32"
+                    Width="155"
+                    Margin="10"
+                    HorizontalAlignment="Stretch"/>
+            <Button Content="Удаление анкеты"
+                    Click="DeleteWorker"
+                    Height="32"
+                    Width="155"
+                    Margin="10"
+                    HorizontalAlignment="Stretch"/>
+        </StackPanel>
+    </Grid>
+</Window>
